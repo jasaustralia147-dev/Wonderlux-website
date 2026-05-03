@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>WanderLux - Trip Calculator</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
+	<div class="container">
+		<a class="navbar-brand" href="index.html">WanderLux<span> Travel Agency</span></a>
+
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+				<li class="nav-item"><a href="destination.html" class="nav-link">Destinations</a></li>
+				<li class="nav-item active"><a href="calculator.html" class="nav-link">Trip Calculator</a></li>
+				<li class="nav-item"><a href="appointment.html" class="nav-link">Appointment</a></li>
+				<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');">
+	<div class="overlay"></div>
+	<div class="container text-center" style="height:250px; display:flex; align-items:center; justify-content:center;">
+		<h1 class="text-white">Trip Cost Calculator</h1>
+	</div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+
+				<div class="bg-light p-5">
+
+					<h3 class="mb-4 text-center">Estimate Your Trip Cost</h3>
+
+					<form id="calculatorForm">
+
+						<!-- Destination -->
+						<div class="form-group">
+							<label>Select Destination</label>
+							<select id="destination" class="form-control">
+
+								<!-- International -->
+								<optgroup label="International Destinations">
+									<option value="100">Philippines</option>
+									<option value="150">Canada</option>
+									<option value="80">Thailand</option>
+									<option value="200">Australia</option>
+									<option value="250">Greece</option>
+								</optgroup>
+
+								<!-- Local Australia -->
+								<optgroup label="Australian Local Packages">
+									<option value="70">Melbourne City Tour</option>
+									<option value="90">Sydney Explorer</option>
+									<option value="80">Gold Coast Adventure</option>
+									<option value="75">Brisbane Getaway</option>
+									<option value="100">Perth Nature Escape</option>
+									<option value="110">Tasmania Discovery</option>
+								</optgroup>
+
+							</select>
+						</div>
+
+						<!-- Travellers -->
+						<div class="form-group">
+							<label>Number of Travellers</label>
+							<input type="number" id="travellers" class="form-control" min="1" required>
+						</div>
+
+						<!-- Days -->
+						<div class="form-group">
+							<label>Number of Days</label>
+							<input type="number" id="days" class="form-control" min="1" required>
+						</div>
+
+						<!-- Style -->
+						<div class="form-group">
+							<label>Travel Style</label>
+							<select id="style" class="form-control">
+								<option value="1">Budget</option>
+								<option value="1.5">Standard</option>
+								<option value="2">Luxury</option>
+							</select>
+						</div>
+
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-primary px-5">
+								Calculate Cost
+							</button>
+						</div>
+
+					</form>
+
+					<h4 id="result" class="text-center mt-4"></h4>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ftco-footer bg-dark text-center py-4">
+	<p class="text-white">
+		Copyright &copy;
+		<script>document.write(new Date().getFullYear());</script>
+		WanderLux Travel Agency
+	</p>
+</footer>
+
+<!-- JS -->
+<script>
+document.getElementById("calculatorForm").addEventListener("submit", function(e) {
+	e.preventDefault();
+
+	let destination = document.getElementById("destination");
+	let destinationName = destination.options[destination.selectedIndex].text;
+	let cost = parseFloat(destination.value);
+
+	let travellers = parseInt(document.getElementById("travellers").value);
+	let days = parseInt(document.getElementById("days").value);
+	let style = parseFloat(document.getElementById("style").value);
+
+	if (!travellers || !days) {
+		alert("Please enter valid values");
+		return;
+	}
+
+	let total = cost * travellers * days * style;
+
+	document.getElementById("result").innerHTML =
+		"<strong>Estimated cost for " + travellers + " travellers to " + destinationName +
+		" for " + days + " days:</strong> $" + total.toFixed(2);
+});
+</script>
+
+</body>
+</html>

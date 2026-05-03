@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>WanderLux - Appointment</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
+	<div class="container">
+		<a class="navbar-brand" href="index.html">WanderLux<span> Travel Agency</span></a>
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
+			<span class="oi oi-menu"></span> Menu
+		</button>
+
+		<div class="collapse navbar-collapse" id="ftco-nav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+				<li class="nav-item"><a href="destination.html" class="nav-link">Destinations</a></li>
+				<li class="nav-item"><a href="calculator.html" class="nav-link">Trip Calculator</a></li>
+				<li class="nav-item active"><a href="appointment.html" class="nav-link">Appointment</a></li>
+				<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_1.jpg');">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters align-items-end justify-content-center" style="height:300px;">
+			<div class="col-md-9 text-center">
+				<h1 class="mb-2 text-white">Request an Appointment</h1>
+				<p class="text-white">Plan your trip with our experts</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- APPOINTMENT FORM -->
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-7">
+
+				<div class="bg-light p-5">
+
+					<h3 class="mb-4 text-center">Book Your Travel Consultation</h3>
+
+					<form id="appointmentForm">
+
+						<div class="form-group">
+							<input type="text" id="name" class="form-control" placeholder="Full Name">
+						</div>
+
+						<div class="form-group">
+							<input type="email" id="email" class="form-control" placeholder="Email Address">
+						</div>
+
+						<div class="form-group">
+							<input type="tel" id="phone" class="form-control" placeholder="Phone Number">
+						</div>
+
+						<div class="form-group">
+							<label>Preferred Date</label>
+							<input type="date" id="date" class="form-control">
+						</div>
+
+						<div class="form-group">
+							<textarea id="message" rows="5" class="form-control" placeholder="Your Message"></textarea>
+						</div>
+
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-primary px-5 py-2">
+								Request Appointment
+							</button>
+						</div>
+
+					</form>
+
+					<p id="successMsg" style="display:none; color:green; text-align:center;">
+						Appointment request submitted successfully!
+					</p>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ftco-footer bg-dark text-center py-4">
+	<p class="text-white">
+		Copyright &copy;
+		<script>document.write(new Date().getFullYear());</script>
+		WanderLux Travel Agency
+	</p>
+</footer>
+
+<!-- JS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!-- VALIDATION -->
+<script>
+document.getElementById("appointmentForm").addEventListener("submit", function(e) {
+	e.preventDefault();
+
+	let name = document.getElementById("name").value.trim();
+	let email = document.getElementById("email").value.trim();
+	let phone = document.getElementById("phone").value.trim();
+	let date = document.getElementById("date").value;
+	let message = document.getElementById("message").value.trim();
+
+	if(name === "" || email === "" || phone === "" || date === "" || message === "") {
+		alert("Please fill all fields!");
+		return;
+	}
+
+	document.getElementById("successMsg").style.display = "block";
+	this.reset();
+});
+</script>
+
+</body>
+</html>
